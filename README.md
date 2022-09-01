@@ -10,7 +10,7 @@ This does NOT:
  * Track when the _provider or node_ received the transaction over p2p.
  * Track when the transaction was _sent_ over p2p.
  * Accurately capture p2p transaction exchange timing.
-   * Specifically, this tool timestamps when transaction _hashes_ are received via subscription.
+   * Specifically, this tool timestamps when transaction _hashes_ are received via websocket subscription.
 
 The purpose of this tool is to gather data that roughly matches the "true" mempool history so it can be easily replayed while testing other applications.
 
