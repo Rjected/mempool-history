@@ -27,9 +27,8 @@ cargo run -- --rpc-url <YOUR_WEBSOCKET_URL>
 ## TODO
  - [ ] Persist timestamped transactions
    - [ ] Figure out how to gracefully recover after a crash. Make sure the tool does not overwrite timestamps of a transaction that already exists. (_stretch goal_)
- - [ ] Asynchronous ordered transaction stream? (_stretch goal_)
+ - [ ] sorted stream? (_stretch goal_)
    - [ ] Prioritize ordering `Transaction`s that are not yet included in a block
-   - It's easy to take a batch of transactions we've already received and order them (just sort a list), but how would this be done in an asynchronous way?
  - [ ] Look into performance benefits from multiple websocket connections or multiple transaction senders
    - [ ] To do this, there needs to be some performance _metric_. What is a good or important metric?
  - [ ] Simplify if on alchemy by using `alchemy_pendingTransactions`
