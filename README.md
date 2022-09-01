@@ -1,5 +1,8 @@
 # mempool-history
 
+[![MIT License](https://img.shields.io/github/license/rjected/mempool-history)](https://github.com/rjected/mempool-history/blob/main/LICENSE)
+[![Test and Lint](https://github.com/Rjected/mempool-history/actions/workflows/ci.yml/badge.svg)](https://github.com/Rjected/mempool-history/actions/workflows/ci.yml)
+
 This tool uses ethereum pending transaction RPCs to listen for mempool transactions and timestamp them.
 It will also log **when** we are notified about a transaction (or transaction hash), allowing us to order mempool transactions by time of receipt.
 
