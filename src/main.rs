@@ -3,10 +3,10 @@ use ethers::{
     prelude::StreamExt,
     providers::{Middleware, Provider, Ws},
 };
-use tracing_subscriber::{EnvFilter, prelude::*};
-use tracing::{info, debug};
 use std::time::{Instant, SystemTime};
 use tokio::sync::mpsc;
+use tracing::{debug, info};
+use tracing_subscriber::{prelude::*, EnvFilter};
 
 mod timed_tx;
 pub use timed_tx::{TimedHash, TimedTransaction};
@@ -89,11 +89,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                     Some(tx) => tx,
                     None => {
                         new_missing_txs.push(timed_hash);
-                        continue
-                    },
+                        continue;
+                    }
                 };
-                let timed_tx =
-                    TimedTransaction::from_timed_hash(timed_hash, time_started, full_tx);
+                let timed_tx = TimedTransaction::from_timed_hash(timed_hash, time_started, full_tx);
                 if timed_tx.transaction.block_number.is_none() || opts.show_old_txs {
                     info!("Timestamped and collected a transaction: {:#?}", timed_tx);
                 }
@@ -107,15 +106,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 Some(tx) => tx,
                 None => {
                     new_missing_txs.push(timed_hash);
-                    continue
-                },
+                    continue;
+                }
             };
 
             // we know missing_transactions is empty (see invariant above) so we can overwrite here
             missing_transactions = new_missing_txs;
 
-            let timed_tx =
-                TimedTransaction::from_timed_hash(timed_hash, time_started, full_tx);
+            let timed_tx = TimedTransaction::from_timed_hash(timed_hash, time_started, full_tx);
             if timed_tx.transaction.block_number.is_none() || opts.show_old_txs {
                 info!("Timestamped and collected a transaction: {:#?}", timed_tx);
             }
